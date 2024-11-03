@@ -1,0 +1,12 @@
+FROM alpine:latest
+
+WORKDIR /app
+
+COPY ./package.json ./
+RUN apk add --update nodejs npm
+RUN apk add --update npm
+RUN npm install --force
+
+COPY ./ ./
+
+CMD [ "npm", "run", "start"]
